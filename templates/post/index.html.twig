@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .head-post:hover
+        {
+            text-decoration: none;
+            opacity: 0.7;
+
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <section id="home-section" class="py-5">
+    <div class="container">
+        {% for message in app.flashes('success')  %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        <div class="row">
+            {% if posts|length>0 %}
+             {% for count,post in posts  %}
+
+            <div class="col-md-8 ">
+                <div class="card clearfix mb-2">
+                    <div class="row no-gutters">
+
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h1 class="card-title  text-capitalize"><a class="text-primary head-post" href="{{ path('app_show_post',{"id":post.id}) }}">{{ post.title }}</a></h1>
+                                <p class="card-text post-desc">{{ post.body }}</p>
+                                <p class="card-text"><small class="text-muted">written by {{ post.author }}</small></p>
+                                <a href="{{ path('app_show_post',{"id":post.id}) }}" class="btn btn-primary ">Read More</a>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://source.unsplash.com/random/200x200/?technology" class="card-img" alt="...">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h1 class=" text-danger text-center mx-auto">Not any post found!</h1>
+            {% endif %}
+
+
+
+        </div>
+
+
+    </div>
+    </section>
+
+    <section id="post-pagination">
+        <div class="container">
+
+            <nav aria-label="pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        {{ knp_pagination_render(posts) }}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+        // select all text
+        let text=document.querySelectorAll('.post-desc');
+        // forloop each text
+        for (let i=0;i<text.length;i++)
+        {
+            if (text[i].innerHTML.length>60)
+            {
+                // if text character higher than 60 charactser
+                // short text
+                text[i].innerHTML=text[i].innerHTML.substring(0,100);
+
+
+            }
+
+        }
+    </script>
+{% endblock %}

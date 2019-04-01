@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+
+        {% block body %}{% endblock %}
+        {% block footer %}
+        <footer class="py-4 bg-light text-center w-100 sticky-bottom">
+            <h6 class="text-black-50">All Right reversed</h6>
+        </footer>
+        {% endblock %}
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

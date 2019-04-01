@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets%}
+    <style>
+        p{
+            font-size:22px;
+
+
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<section id="read-post-section" class="bg-light">
+    <div class="container py-5">
+        
+       <h1 class="display-4 text-primary">{{ post.title }}</h1>
+        <img src="https://source.unsplash.com/random/1100x400/?technology">
+        <p class="lead">{{ post.body }}</p>
+
+        <a href="/" class="text-primary">Go Back</a>
+
+
+
+
+    </div>
+</section>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
