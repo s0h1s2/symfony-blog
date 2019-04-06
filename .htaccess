@@ -2,6 +2,6 @@ RewriteEngine on
 RewriteBase /symfony-blog/
 
 RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
-RewriteRule ^ %1 [L,NE,R=200]
+RewriteRule ^ %1 [L,NE,R=302]
 
 RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
